@@ -1,21 +1,8 @@
 
 
 /*
-Library examples for TM1638.
-
-Copyright (C) 2011 Ricardo Batista <rjbatista at gmail dot com>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the version 3 GNU General Public License as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+Hello to horses
+Saattaa jakaa korttia tai saatta olla jakamatta.
 */
 
 
@@ -33,7 +20,7 @@ Stepper myStepper2(stepsPerRevolution, 3, 4, 5, 6);
 // define a module on data pin 12, clock pin 13 and strobe pin 11 
 TM1638 module(12, 13, 11, true, 1);
 
-byte buttons, oldbuttons;
+byte buttons;
 
 bool Deal = false;
 
@@ -41,7 +28,8 @@ int Players = 4;
 int Cards = 5;
 int Dealt_Cards = 0;
 
-void setup() {
+void setup() 
+{
 
 
   // set the speed at 60 rpm:
@@ -53,21 +41,21 @@ void setup() {
 
 }
 
-void loop() {
+void loop() 
+{
 
     
 
-    // display a variables at 1st and 5th position
+  // display a variables at 1st and 5th position
   module.setDisplayDigit(Players, 0, false);
   module.setDisplayDigit(Cards, 3, false);
-
 
   buttons = module.getButtons();
 
 
   if (buttons != 0) 
   {
-      delay(300);
+      delay(300); 
                             
                     switch (buttons)
                     
@@ -100,86 +88,549 @@ void loop() {
 
   if (Deal == true)
   {
-    for (int i = 0; i < Cards; i++)
+
+
+
+      if (Players == 2)
       {
-        // step one revolution  in one direction:
-        Serial.println("myStepper2 clockwise");
-        myStepper2.step(stepsPerRevolution);
-        ++Dealt_Cards;
-        module.setDisplayToDecNumber(Dealt_Cards, 0, false);
-        //Serial.println (Players);
-        //Serial.println (Cards);  
-        delay(100);
+        
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+      
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+        
+  
       }
 
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-    delay(100);
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-
-    for (int i = 0; i < Cards; i++)
+      if (Players == 3)
       {
-        // step one revolution  in one direction:
-        Serial.println("myStepper2 clockwise");
-        myStepper2.step(stepsPerRevolution);
-        ++Dealt_Cards;
-        module.setDisplayToDecNumber(Dealt_Cards, 0, false);
-        //Serial.println (Players);
-        //Serial.println (Cards);  
-        delay(100);
+        
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+            delay(10);
+            Serial.println("myStepper1 clockwise");
+            myStepper1.step(stepsPerRevolution);
+      
+  
       }
 
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-    delay(100);
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-
-    for (int i = 0; i < Cards; i++)
+      if (Players == 4)
       {
-        // step one revolution  in one direction:
-        Serial.println("myStepper2 clockwise");
-        myStepper2.step(stepsPerRevolution);
-        ++Dealt_Cards;
-        module.setDisplayToDecNumber(Dealt_Cards, 0, false);
-        //Serial.println (Players);
-        //Serial.println (Cards);  
-        delay(100);
+        
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            ////Serial.println (Cards);   
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
       }
 
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-    delay(100);
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-
-    for (int i = 0; i < Cards; i++)
+      if (Players == 5)
       {
-        // step one revolution  in one direction:
-        Serial.println("myStepper2 clockwise");
-        myStepper2.step(stepsPerRevolution);
-        ++Dealt_Cards;
-        module.setDisplayToDecNumber(Dealt_Cards, 0, false);
-        //Serial.println (Players);
-        ////Serial.println (Cards);   
-        delay(100);
+        
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            ////Serial.println (Cards);   
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
       }
 
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
-    delay(100);
-    Serial.println("myStepper1 clockwise");
-    myStepper1.step(stepsPerRevolution);
+      if (Players == 6)
+      {
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+        
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            ////Serial.println (Cards);   
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+      }
+
+      if (Players == 7)
+      {
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+        
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+        
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            //Serial.println (Cards);  
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+
+    
+        for (int i = 0; i < Cards; i++)
+          {
+            // step one revolution  in one direction:
+            Serial.println("myStepper2 clockwise");
+            myStepper2.step(stepsPerRevolution);
+            ++Dealt_Cards;
+            module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+            //Serial.println (Players);
+            ////Serial.println (Cards);   
+            delay(10);
+          }
+    
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+          delay(10);
+          Serial.println("myStepper1 clockwise");
+          myStepper1.step(stepsPerRevolution);
+    
+      }
+
+      if (Players == 8)
+      {
+       for (int i = 0; i < Players; i++)
+          {
+
+              for (int y = 0; y < Cards; y++)
+                {
+                  // step one revolution  in one direction:
+                  Serial.println("myStepper2 clockwise");
+                  myStepper2.step(stepsPerRevolution);
+                  ++Dealt_Cards;
+                  module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+                  //Serial.println (Players);
+                  //Serial.println (Cards);  
+                  delay(10);
+                }
+          
+                Serial.println("myStepper1 clockwise");
+                myStepper1.step(stepsPerRevolution);
+                delay(10);
+                   
+          }
+      }
 
       Deal = false;
       Dealt_Cards = 0;
       
    }
-
-  /*Serial.print (Players);
-  Serial.print (Cards);
-  Serial.print (Deal);
-  //Serial.print (buttons);
-  */
-  }
+}
