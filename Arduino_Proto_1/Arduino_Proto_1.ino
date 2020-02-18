@@ -10,13 +10,15 @@ Saattaa jakaa korttia tai saatta olla jakamatta.
 
 const int stepsPerRevolution = 200;
 
-// initialize the stepper library on pins 7 through 10:
-Stepper myStepper2(stepsPerRevolution, 7, 8, 9, 10);
-
 // initialize the stepper library on pins 3 through 6:
 Stepper myStepper1(stepsPerRevolution, 3, 4, 5, 6);
 
+// initialize the stepper library on pins 7 through 10:
+Stepper myStepper2(stepsPerRevolution, 7, 8, 9, 10);
+
+
 #include <TM1638.h>
+
 // define a module on data pin 12, clock pin 13 and strobe pin 11 
 TM1638 module(12, 13, 11, true, 1);
 
@@ -38,7 +40,7 @@ int Dealing_Position = 1;
         module.setDisplayToDecNumber(Dealt_Cards, 0, false);
         //Serial.println (Players);
         //Serial.println (Cards);  
-        delay(10);
+        delay(150);
     
     }
 
@@ -48,7 +50,7 @@ int Dealing_Position = 1;
       myStepper1.step(stepsPerRevolution);
       ++Dealing_Position;
       Serial.println(Dealing_Position);
-      delay(10);  
+      delay(300);  
       
     }
 
