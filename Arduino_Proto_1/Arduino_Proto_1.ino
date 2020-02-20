@@ -1,10 +1,7 @@
-
-
 /*
 Hello to horses
 Saattaa jakaa korttia tai saatta olla jakamatta.
 */
-
 
 #include <Stepper.h>
 
@@ -15,7 +12,6 @@ Stepper myStepper1(stepsPerRevolution, 3, 4, 5, 6);
 
 // initialize the stepper library on pins 7 through 10:
 Stepper myStepper2(stepsPerRevolution, 7, 8, 9, 10);
-
 
 #include <TM1638.h>
 
@@ -33,41 +29,35 @@ int Dealing_Position = 1;
 
     void Deal_Cards_Function()
     {
-        // step one revolution  in one direction:
-        Serial.println("Deal Card");
-        myStepper2.step(stepsPerRevolution);
-        ++Dealt_Cards;
-        module.setDisplayToDecNumber(Dealt_Cards, 0, false);
-        //Serial.println (Players);
-        //Serial.println (Cards);  
-        delay(150);
-    
+      // step one revolution  in one direction:
+      Serial.println("Deal Card");
+      myStepper2.step(stepsPerRevolution);
+      ++Dealt_Cards;
+      module.setDisplayToDecNumber(Dealt_Cards, 0, false);
+      //Serial.println (Players);
+      //Serial.println (Cards);  
+      // delay(500);
     }
-
     void Index_Machine_Function()
     {
       Serial.println("Index Machine");
       myStepper1.step(stepsPerRevolution);
       ++Dealing_Position;
       Serial.println(Dealing_Position);
-      delay(300);  
-      
+      //delay(300);  
     }
-
+    
 void setup() 
 {
-
   // set the speed at 300 rpm:
   myStepper1.setSpeed(300);
   myStepper2.setSpeed(300);
   
   Serial.begin(9600);
-
 }
 
 void loop() 
 {
-
   // display a variables at 1st and 5th position
   module.setDisplayDigit(Players, 0, false);
   module.setDisplayDigit(Cards, 3, false);
@@ -76,300 +66,228 @@ void loop()
 
   if (buttons != 0) 
   {
-      delay(300); 
+    delay(300); 
                             
-                    switch (buttons)
-                    
-                      {
-                            case 1:
-                                Players = ++Players;
-                                buttons = 0;
-                                break;
-                            case 2:
-                                Players = --Players;
-                                buttons = 0;
-                                break;
-                            case 8:
-                                Cards = ++Cards;
-                                buttons = 0;
-                                break;
-                            case 16:
-                                Cards = --Cards;
-                                buttons = 0;
-                                break;
-                            case 128:
-                                Deal = true;
-                                buttons = 0;
-                                break; 
-                                
-                        }
-
-  
+    switch (buttons)
+      {
+        case 1:
+          Players = ++Players;
+          buttons = 0;
+          break;
+        case 2:
+          Players = --Players;
+          buttons = 0;
+          break;
+        case 8:
+          Cards = ++Cards;
+          buttons = 0;
+          break;
+        case 16:
+          Cards = --Cards;
+          buttons = 0;
+          break;
+        case 128:
+          Deal = true;
+          buttons = 0;
+          break;                       
+     }
     }
 
   if (Deal == true)
   {
 
-      if (Players == 2)
+  switch (Players)
+
+  {
+    case 2:
+      for (int i = 0; i < Cards; i++)
       {
-        
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-      
-            Index_Machine_Function();
-            Index_Machine_Function();
-            Index_Machine_Function();
-            Index_Machine_Function();
+        Deal_Cards_Function();
+      } 
+        Index_Machine_Function();
+        Index_Machine_Function();
+        Index_Machine_Function();
+        Index_Machine_Function();
 
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-            Index_Machine_Function();
-            Index_Machine_Function();
-        
-      }
-
-      if (Players == 3)
+      for (int i = 0; i < Cards; i++)
       {
-        
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-            Index_Machine_Function();
-            Index_Machine_Function();
-      
+        Deal_Cards_Function();
       }
-
-      if (Players == 4)
+        Index_Machine_Function();
+        Index_Machine_Function();
+        Index_Machine_Function();
+        Index_Machine_Function();
+    break;
+        
+    case 3:
+      for (int i = 0; i < Cards; i++)
       {
-        
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
+        Deal_Cards_Function();
       }
-
-      if (Players == 5)
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
       {
-        
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
+        Deal_Cards_Function();
       }
-
-      if (Players == 6)
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
       {
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-        
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
+        Deal_Cards_Function();
       }
+        Index_Machine_Function();
+        Index_Machine_Function();
+        Index_Machine_Function();
+        Index_Machine_Function();
+    break;
 
-      if (Players == 7)
+    case 4:
+      for (int i = 0; i < Cards; i++)
       {
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-        
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-        
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-
-            Index_Machine_Function();
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-
-    
-        for (int i = 0; i < Cards; i++)
-          {
-            Deal_Cards_Function();
-          }
-    
-            Index_Machine_Function();
-            Index_Machine_Function();
-    
+        Deal_Cards_Function();
       }
-
-      if (Players == 8)
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
       {
-       for (int i = 0; i < Players; i++)
-          {
-
-              for (int y = 0; y < Cards; y++)
-                {
-                    Deal_Cards_Function();
-                }
-          
-                    Index_Machine_Function();
-                   
-          }
+        Deal_Cards_Function();
       }
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+    break;
 
-      Deal = false;
-      Dealt_Cards = 0;
-      Dealing_Position = 1;
-      
-   }
-}
+    case 5:
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+    break;
+
+    case 6:
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+    break;
+
+    case 7:
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }   
+        Index_Machine_Function();
+      for (int i = 0; i < Cards; i++)
+      {
+        Deal_Cards_Function();
+      }
+        Index_Machine_Function();
+        Index_Machine_Function();
+    break;
+
+    case 8:
+      for (int i = 0; i < Players; i++)
+      { 
+        for (int y = 0; y < Cards; y++)
+        {
+          Deal_Cards_Function();
+        }         
+          Index_Machine_Function();     
+      }
+    break;
+  }
+    Deal = false;
+    Dealt_Cards = 0;
+    Dealing_Position = 1;
+    }
+  }
